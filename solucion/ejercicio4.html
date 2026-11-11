@@ -7,30 +7,40 @@
 </head>
 <body>
     <h1>Reto final: Buscador de estudiantes</h1>
-    <p>Construye este ejercicio aplicando lo aprendido sobre arreglos, funciones y eventos con botones.</p>
+    <h2>Situación</h2>
+    <p>La secretaría de una escuela necesita consultar rápidamente los datos de sus estudiantes. Construye una página que permita buscar a un estudiante por nombre y mostrar su ficha. Desarrolla la interfaz en este archivo y programa la lógica en <code>js/ejercicio4.js</code>.</p>
 
-    <h2>Objetivo</h2>
-    <p>Crea una página que permita buscar estudiantes por nombre dentro de un arreglo y mostrar sus datos.</p>
+    <h2>Datos de los estudiantes</h2>
+    <p>Crea en JavaScript un arreglo con al menos cinco estudiantes. Cada registro debe tener nombre, edad y curso. Usa estos datos como referencia:</p>
+    <ul>
+        <li>Ana Torres, 14 años, curso 9A.</li>
+        <li>Mateo Ruiz, 15 años, curso 10B.</li>
+        <li>Lucía Gómez, 13 años, curso 8A.</li>
+        <li>Samuel Díaz, 16 años, curso 11A.</li>
+        <li>Valentina Cruz, 14 años, curso 9B.</li>
+    </ul>
 
     <h2>Requisitos</h2>
     <ol>
-        <li>Define un arreglo de estudiantes. Cada estudiante debe tener, como mínimo, nombre, edad y curso.</li>
-        <li>Agrega un campo de texto para escribir el nombre que se desea buscar.</li>
-        <li>Agrega un botón de tipo <code>button</code> que invoque una función creada por ti.</li>
-        <li>Busca sin distinguir entre mayúsculas y minúsculas, y sin considerar espacios al inicio o al final.</li>
-        <li>Si encuentras al estudiante, muestra su nombre, edad y curso.</li>
-        <li>Si no lo encuentras o el campo está vacío, muestra un mensaje apropiado.</li>
-        <li>Organiza la presentación de los resultados en el HTML y la lógica de búsqueda en <code>js/ejercicio4.js</code>.</li>
+        <li>Agrega un campo de texto y un botón <code>type="button"</code> que llame a tu función mediante <code>onclick</code>.</li>
+        <li>Busca por nombre sin distinguir entre mayúsculas y minúsculas ni considerar espacios sobrantes al principio o al final.</li>
+        <li>Cuando haya coincidencia, muestra el nombre, la edad y el curso del estudiante.</li>
+        <li>Si el campo está vacío, pide ingresar un nombre. Si no hay coincidencia, informa que no se encontró al estudiante.</li>
+        <li>Permite realizar varias búsquedas seguidas sin recargar la página.</li>
+        <li>Organiza los mensajes y resultados en el HTML, y guarda los datos en un arreglo de objetos.</li>
     </ol>
 
-    <h2>Antes de entregar</h2>
+    <h2>Pruebas obligatorias</h2>
     <ul>
-        <li>Prueba una búsqueda existente, una inexistente y el campo vacío.</li>
-        <li>Comprueba que el botón llame a tu función y que el archivo JavaScript esté conectado correctamente.</li>
-        <li>Verifica que los identificadores usados en HTML coincidan con los consultados en JavaScript.</li>
+        <li>Busca <code>Ana Torres</code> y confirma que se muestre su ficha.</li>
+        <li>Repite la búsqueda con mayúsculas/minúsculas diferentes y espacios sobrantes.</li>
+        <li>Busca un nombre que no esté en el arreglo y prueba el campo vacío.</li>
+        <li>Realiza dos búsquedas seguidas y verifica que el resultado anterior no confunda al nuevo.</li>
     </ul>
 
-    <p>Este reto no incluye una solución. Diseña tu propia interfaz e implementa la búsqueda.</p>
+    <h2>Entrega</h2>
+    <p>La página debe tener un título, el campo de búsqueda, el botón y un espacio visible para mensajes y resultados. Comprueba que los <code>id</code> usados en JavaScript existan en el HTML y que <code>js/ejercicio4.js</code> esté conectado.</p>
+    <p>Este reto no incluye una solución. Diseña la interfaz y escribe tu propio código usando los arreglos y funciones aprendidos en los ejercicios anteriores.</p>
     <p><a href="index.html">Volver al menú</a></p>
 
     <script src="js/ejercicio4.js"></script>

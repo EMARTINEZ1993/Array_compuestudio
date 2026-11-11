@@ -4,6 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía del taller práctico de arreglos</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #1e293b;
+            background: #eef2ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+
+        main {
+            width: min(100%, 920px);
+            margin: 0 auto;
+            padding: clamp(24px, 5vw, 56px);
+            background: #fff;
+            border: 1px solid #dbe3f0;
+            border-radius: 20px;
+            box-shadow: 0 18px 50px #1e293b18;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.25;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #312e81;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        h2 {
+            margin-top: 2.5rem;
+            padding-bottom: 10px;
+            color: #4338ca;
+            border-bottom: 2px solid #e0e7ff;
+        }
+
+        h3 {
+            margin-top: 1.8rem;
+            color: #0f766e;
+        }
+
+        p, li {
+            font-size: 1rem;
+        }
+
+        li {
+            padding-left: 4px;
+            margin: 6px 0;
+        }
+
+        code {
+            padding: 2px 6px;
+            color: #9f1239;
+            background: #fff1f2;
+            border-radius: 5px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: .92em;
+        }
+
+        pre {
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 20px;
+            color: #e2e8f0;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            line-height: 1.55;
+            white-space: pre;
+        }
+
+        pre code {
+            padding: 0;
+            color: inherit;
+            background: transparent;
+            font-size: .9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 10px;
+            }
+
+            main {
+                padding: 22px 18px;
+                border-radius: 14px;
+            }
+
+            pre {
+                padding: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -318,8 +422,37 @@ function mostrar() {
             <li>Verifica que el formulario se limpie después de agregar un producto.</li>
         </ul>
         <h2>7. Reto final: buscador de estudiantes</h2>
-        <p>El archivo <code>ejercicio4.html</code> contiene únicamente el enunciado del reto; no se proporciona una solución para copiar. El reto consiste en construir tu propia interfaz y JavaScript para buscar estudiantes por nombre. Consulta la página para ver los requisitos y los casos que debes probar.</p>
-        <p>Antes de programar, dibuja en papel qué información tendrá cada estudiante y qué elementos necesitará la página. Después implementa tu propuesta usando los arreglos, funciones y botones de los ejercicios anteriores. El archivo <code>js/ejercicio4.js</code> queda para tu implementación.</p>
+        <h3>Situación</h3>
+        <p>La secretaría de una escuela necesita consultar rápidamente los datos de sus estudiantes. Tu tarea es crear una página web que permita escribir el nombre de un estudiante y ver su ficha. Construye la interfaz en <code>ejercicio4.html</code> y escribe la lógica en <code>js/ejercicio4.js</code>. Este ejercicio es un reto individual: aquí se describe qué debe hacer, pero no se entrega el código de la solución.</p>
+        <h3>Datos que debe manejar el programa</h3>
+        <p>Crea en JavaScript un arreglo con al menos cinco estudiantes. Cada estudiante debe tener nombre, edad y curso. Usa estos datos como referencia para crear tus registros:</p>
+        <ul>
+            <li>Ana Torres, 14 años, curso 9A.</li>
+            <li>Mateo Ruiz, 15 años, curso 10B.</li>
+            <li>Lucía Gómez, 13 años, curso 8A.</li>
+            <li>Samuel Díaz, 16 años, curso 11A.</li>
+            <li>Valentina Cruz, 14 años, curso 9B.</li>
+        </ul>
+        <h3>Lo que debe permitir la página</h3>
+        <ol>
+            <li>Escribir el nombre de un estudiante en un campo de texto.</li>
+            <li>Iniciar la búsqueda con un botón de tipo <code>button</code> que llame a una función mediante <code>onclick</code>.</li>
+            <li>Encontrar el nombre aunque se escriba con mayúsculas o minúsculas diferentes, y aunque haya espacios sobrantes al principio o al final.</li>
+            <li>Cuando haya coincidencia, mostrar en la página el nombre, la edad y el curso del estudiante.</li>
+            <li>Si el campo está vacío, pedir que se escriba un nombre. Si no hay coincidencia, informar que el estudiante no fue encontrado.</li>
+            <li>Permitir hacer otra búsqueda sin recargar la página.</li>
+        </ol>
+        <h3>Pruebas obligatorias</h3>
+        <ul>
+            <li>Busca un nombre de la lista, por ejemplo, <code>Ana Torres</code>.</li>
+            <li>Repite la búsqueda usando otras mayúsculas/minúsculas y espacios al inicio o al final.</li>
+            <li>Busca un nombre que no esté en el arreglo.</li>
+            <li>Presiona el botón dejando el campo vacío.</li>
+            <li>Realiza dos búsquedas seguidas y comprueba que el resultado anterior no confunda al nuevo.</li>
+        </ul>
+        <h3>Entrega</h3>
+        <p>La página debe tener un título, el campo de búsqueda, el botón y un espacio visible para los mensajes y los datos encontrados. Mantén los datos en un arreglo de objetos y realiza la búsqueda con una función propia. Comprueba que cada <code>id</code> consultado en JavaScript exista en el HTML y que el archivo JavaScript esté conectado correctamente.</p>
+        <p>Antes de programar, piensa qué elementos HTML necesitas y cómo recorrerás o consultarás el arreglo. Puedes revisar los ejercicios anteriores como referencia de los conceptos, pero diseña e implementa tu propia solución.</p>
         <h2>8. Lista de comprobación final</h2>
         <ul>
             <li>[ ] Todos los archivos están en las carpetas indicadas.</li>
@@ -327,8 +460,28 @@ function mostrar() {
             <li>[ ] Los <code>id</code> del HTML coinciden con los usados en JavaScript.</li>
             <li>[ ] Los botones que ejecutan funciones usan <code>type="button"</code> y <code>onclick</code>.</li>
             <li>[ ] Los tres primeros ejercicios se prueban con entradas válidas y no válidas.</li>
-            <li>[ ] El reto final tiene una solución propia y se prueba con estudiantes encontrados, no encontrados y una búsqueda vacía.</li>
+            <li>[ ] El reto final tiene una solución propia y se prueba con un nombre encontrado, variaciones de mayúsculas y espacios, un nombre inexistente, el campo vacío y dos búsquedas seguidas.</li>
         </ul>
     </main>
+    <script>
+        document.addEventListener("copy", bloquearCopia);
+        document.addEventListener("cut", bloquearCopia);
+        document.addEventListener("contextmenu", bloquearCopia);
+        document.addEventListener("dragstart", bloquearCopia);
+
+        document.addEventListener("keydown", function (event) {
+            const tecla = event.key.toLowerCase();
+            const atajoCopiar = (event.ctrlKey || event.metaKey) && (tecla === "c" || tecla === "x");
+            const copiarConInsert = event.ctrlKey && tecla === "insert";
+
+            if (atajoCopiar || copiarConInsert) {
+                event.preventDefault();
+            }
+        });
+
+        function bloquearCopia(event) {
+            event.preventDefault();
+        }
+    </script>
 </body>
 </html>

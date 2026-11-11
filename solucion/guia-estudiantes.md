@@ -354,9 +354,38 @@ function mostrar() {
 
 ## 7. Reto final: buscador de estudiantes
 
-El archivo `ejercicio4.html` contiene únicamente el enunciado del reto; no se proporciona una solución para copiar. El reto consiste en construir tu propia interfaz y JavaScript para buscar estudiantes por nombre. Consulta la página para ver los requisitos y los casos que debes probar.
+### Situación
 
-Antes de programar, dibuja en papel qué información tendrá cada estudiante y qué elementos necesitará la página. Después implementa tu propuesta usando los arreglos, funciones y botones de los ejercicios anteriores. El archivo `js/ejercicio4.js` queda para tu implementación.
+La secretaría de una escuela necesita consultar rápidamente los datos de sus estudiantes. Crea una página que permita escribir el nombre de un estudiante y ver su ficha. Construye la interfaz en `ejercicio4.html` y escribe la lógica en `js/ejercicio4.js`. Este es un reto individual: se especifica el resultado esperado, pero no se proporciona el código de la solución.
+
+### Datos
+
+Crea en JavaScript un arreglo con al menos cinco estudiantes. Cada objeto debe contener nombre, edad y curso. Usa estos datos como referencia:
+
+- Ana Torres, 14 años, curso 9A.
+- Mateo Ruiz, 15 años, curso 10B.
+- Lucía Gómez, 13 años, curso 8A.
+- Samuel Díaz, 16 años, curso 11A.
+- Valentina Cruz, 14 años, curso 9B.
+
+### Requisitos
+
+1. Incluye un campo de texto y un botón `type="button"` que llame a una función mediante `onclick`.
+2. Busca por nombre sin distinguir mayúsculas de minúsculas ni considerar espacios sobrantes al principio o al final.
+3. Si hay coincidencia, muestra nombre, edad y curso en la página.
+4. Si el campo está vacío, pide ingresar un nombre. Si no existe, informa que no se encontró al estudiante.
+5. Permite realizar varias búsquedas seguidas sin recargar la página.
+6. Organiza los mensajes y resultados en el HTML; guarda los datos en un arreglo de objetos.
+
+### Pruebas y entrega
+
+- Busca `Ana Torres` y confirma que se muestre su ficha.
+- Repite la búsqueda con mayúsculas/minúsculas diferentes y espacios sobrantes.
+- Busca un nombre que no esté en el arreglo y luego prueba el campo vacío.
+- Realiza dos búsquedas seguidas y verifica que el resultado anterior no confunda al nuevo.
+- Comprueba que los `id` consultados en JavaScript existan en el HTML y que `js/ejercicio4.js` esté conectado.
+
+Antes de programar, decide qué elementos HTML necesitas y cómo consultarás el arreglo. Usa los ejercicios anteriores como referencia de conceptos, pero implementa tu propia solución.
 
 ## 8. Lista de comprobación final
 
@@ -365,4 +394,4 @@ Antes de programar, dibuja en papel qué información tendrá cada estudiante y 
 - [ ] Los `id` del HTML coinciden con los usados en JavaScript.
 - [ ] Los botones que ejecutan funciones usan `type="button"` y `onclick`.
 - [ ] Los tres primeros ejercicios se prueban con entradas válidas y no válidas.
-- [ ] El reto final tiene una solución propia y se prueba con estudiantes encontrados, no encontrados y una búsqueda vacía.
+- [ ] El reto final tiene una solución propia y se prueba con un nombre encontrado, variaciones de mayúsculas y espacios, un nombre inexistente, el campo vacío y dos búsquedas seguidas.
