@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía del taller práctico de arreglos</title>
+</head>
+<body>
+    <main>
+        <h1>Guía del taller práctico de arreglos</h1>
+        <p>En esta guía construirás paso a paso los tres primeros ejercicios del proyecto. El reto final, el buscador de estudiantes, queda sin solución para que lo desarrolles por tu cuenta.</p>
+        <h2>1. Preparar el proyecto</h2>
+        <ol>
+            <li>Crea una carpeta llamada <code>taller-array</code>.</li>
+            <li>Dentro de ella, crea los archivos HTML y la carpeta <code>js</code> con esta estructura:</li>
+        </ol>
+        <pre><code class="language-text">taller-array/
+├── index.html
+├── ejercicio1.html
+├── ejercicio2.html
+├── ejercicio3.html
+├── ejercicio4.html
+└── js/
+    ├── ejercicio1.js
+    ├── ejercicio2.js
+    ├── ejercicio3.js
+    └── ejercicio4.js</code></pre>
+        <ol start="3">
+            <li>Abre la carpeta completa en Visual Studio Code.</li>
+            <li>Escribe el HTML en cada archivo <code>.html</code> y el JavaScript correspondiente dentro de <code>js</code>.</li>
+            <li>Para probar el proyecto, abre <code>index.html</code> en un navegador y entra a cada ejercicio.</li>
+        </ol>
+        <h2>2. Conceptos que usarás</h2>
+        <ul>
+            <li>Un <strong>arreglo</strong> guarda varios valores en una sola variable, por ejemplo: <code>let nombres = [];</code>.</li>
+            <li><code>push(valor)</code> agrega un elemento al final del arreglo.</li>
+            <li><code>document.getElementById("...")</code> obtiene un elemento HTML por su <code>id</code>.</li>
+            <li><code>.value</code> lee o cambia el valor de un campo de entrada.</li>
+            <li><code>.textContent</code> y <code>.innerHTML</code> permiten actualizar contenido de la página.</li>
+            <li>Una función agrupa instrucciones para ejecutar una tarea.</li>
+            <li>En este proyecto, cada botón usa <code>type="button"</code> y llama a una función con <code>onclick</code>, por ejemplo: <code>&lt;button type="button" onclick="miFuncion()"&gt;Agregar&lt;/button&gt;</code>.</li>
+            <li>Los <code>id</code> del HTML y los consultados en JavaScript deben coincidir exactamente.</li>
+        </ul>
+        <h2>3. Crear el menú principal</h2>
+        <p>En <code>index.html</code>, agrega enlaces a cada ejercicio:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Taller práctico de arrays&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Taller práctico de Arrays&lt;/h1&gt;
+    &lt;p&gt;Selecciona el ejercicio que deseas desarrollar:&lt;/p&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href=&quot;ejercicio1.html&quot;&gt;Ejercicio 1: Registro de nombres&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;ejercicio2.html&quot;&gt;Ejercicio 2: Lista de números&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;ejercicio3.html&quot;&gt;Ejercicio 3: Gestión de productos&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;ejercicio4.html&quot;&gt;Reto final: Buscador de estudiantes&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>Cada enlace debe apuntar al nombre exacto de su archivo.</p>
+        <h2>4. Ejercicio 1: Registro de nombres</h2>
+        <h3>Paso 1: crear el HTML</h3>
+        <p>En <code>ejercicio1.html</code>, agrega el campo donde se escribirá un nombre, el botón, la lista y el contador. El <code>onclick</code> llama a la función que programarás:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Registro de nombres&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Registro de nombres&lt;/h1&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nombre&quot;&gt;
+    &lt;button type=&quot;button&quot; onclick=&quot;agregarNombre()&quot;&gt;Agregar&lt;/button&gt;
+
+    &lt;h2&gt;Personas registradas&lt;/h2&gt;
+    &lt;ul id=&quot;lista&quot;&gt;&lt;/ul&gt;
+    &lt;p id=&quot;cantidad&quot;&gt;&lt;/p&gt;
+
+    &lt;script src=&quot;js/ejercicio1.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <h3>Paso 2: programar la lógica</h3>
+        <p>En <code>js/ejercicio1.js</code>:</p>
+        <ol>
+            <li>Crea un arreglo vacío para guardar los nombres.</li>
+            <li>Obtén el campo, la lista y el contador por sus <code>id</code>.</li>
+            <li>En <code>agregarNombre()</code>, lee el campo, quita espacios sobrantes y convierte el texto a mayúsculas.</li>
+            <li>No agregues el nombre si está vacío o ya existe.</li>
+            <li>Si es válido, agrégalo con <code>push</code>, limpia el campo y llama a <code>mostrarNombre()</code>.</li>
+            <li>En <code>mostrarNombre()</code>, recorre el arreglo y actualiza la lista y el total.</li>
+        </ol>
+        <pre><code class="language-javascript">let listaNombres = [];
+
+let inputNombre = document.getElementById(&quot;nombre&quot;);
+let lista = document.getElementById(&quot;lista&quot;);
+let cantidad = document.getElementById(&quot;cantidad&quot;);
+
+function agregarNombre() {
+    let nombre = inputNombre.value.trim().toUpperCase();
+
+    if (nombre === &quot;&quot;) {
+        alert(&quot;Ingrese el nombre&quot;);
+        inputNombre.style.backgroundColor = &quot;red&quot;;
+        return;
+    }
+
+    if (listaNombres.includes(nombre)) {
+        alert(`El nombre ${nombre} ya está registrado`);
+        inputNombre.value = &quot;&quot;;
+        return;
+    }
+
+    inputNombre.style.backgroundColor = &quot;white&quot;;
+    listaNombres.push(nombre);
+    inputNombre.value = &quot;&quot;;
+    inputNombre.focus();
+    mostrarNombre();
+}
+
+function mostrarNombre() {
+    lista.innerHTML = &quot;&quot;;
+
+    for (let i = 0; i &lt; listaNombres.length; i++) {
+        lista.innerHTML += `&lt;li&gt;${listaNombres[i]}&lt;/li&gt;`;
+    }
+
+    cantidad.textContent = `Total nombres: ${listaNombres.length}`;
+}</code></pre>
+        <h3>Paso 3: probar</h3>
+        <ul>
+            <li>Intenta agregar un nombre.</li>
+            <li>Intenta agregar el mismo nombre otra vez.</li>
+            <li>Intenta agregar el campo vacío.</li>
+            <li>Comprueba que la lista y el contador se actualicen.</li>
+        </ul>
+        <h2>5. Ejercicio 2: Operaciones con números</h2>
+        <h3>Paso 1: crear el HTML</h3>
+        <p>En <code>ejercicio2.html</code>, prepara un campo numérico, un botón, una lista y espacios para los resultados:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Operaciones con números&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Operaciones con Array&lt;/h1&gt;
+    &lt;input type=&quot;number&quot; id=&quot;numero&quot;&gt;
+    &lt;button type=&quot;button&quot; onclick=&quot;agregarNumeros()&quot;&gt;Agregar número&lt;/button&gt;
+
+    &lt;h2&gt;Números registrados&lt;/h2&gt;
+    &lt;ul id=&quot;lista&quot;&gt;&lt;/ul&gt;
+
+    &lt;h2&gt;Resultados&lt;/h2&gt;
+    &lt;p id=&quot;suma&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;promedio&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;mayor&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;menor&quot;&gt;&lt;/p&gt;
+
+    &lt;script src=&quot;js/ejercicio2.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <h3>Paso 2: programar la lógica</h3>
+        <p>En <code>js/ejercicio2.js</code>, guarda los valores como números, valida la entrada y actualiza los resultados cada vez que se agrega uno:</p>
+        <pre><code class="language-javascript">let listaNumeros = [];
+
+let input = document.getElementById(&quot;numero&quot;);
+let lista = document.getElementById(&quot;lista&quot;);
+let suma = document.getElementById(&quot;suma&quot;);
+let promedio = document.getElementById(&quot;promedio&quot;);
+let mayor = document.getElementById(&quot;mayor&quot;);
+let menor = document.getElementById(&quot;menor&quot;);
+
+function agregarNumeros() {
+    let numero = parseFloat(input.value);
+
+    if (isNaN(numero)) {
+        alert(&quot;Por favor, ingrese un número válido.&quot;);
+        input.style.backgroundColor = &quot;#cb3234&quot;;
+        input.focus();
+        return;
+    }
+
+    input.style.backgroundColor = &quot;#fff&quot;;
+    listaNumeros.push(numero);
+    input.value = &quot;&quot;;
+    input.focus();
+    mostrarResultados();
+}
+
+function mostrarResultados() {
+    lista.innerHTML = &quot;&quot;;
+    let total = 0;
+    let numMayor = listaNumeros[0];
+    let numMenor = listaNumeros[0];
+
+    for (let i = 0; i &lt; listaNumeros.length; i++) {
+        lista.innerHTML += `&lt;li&gt;${listaNumeros[i]}&lt;/li&gt;`;
+        total += listaNumeros[i];
+
+        if (listaNumeros[i] &gt; numMayor) {
+            numMayor = listaNumeros[i];
+        }
+
+        if (listaNumeros[i] &lt; numMenor) {
+            numMenor = listaNumeros[i];
+        }
+    }
+
+    let media = total / listaNumeros.length;
+    suma.textContent = `Suma: ${total}`;
+    promedio.textContent = `Promedio: ${media.toFixed(1)}`;
+    mayor.textContent = `Número mayor: ${numMayor}`;
+    menor.textContent = `Número menor: ${numMenor}`;
+}</code></pre>
+        <h3>Paso 3: probar</h3>
+        <p>Agrega varios números, incluyendo números negativos y decimales. Verifica manualmente la suma, el promedio, el mayor y el menor.</p>
+        <h2>6. Ejercicio 3: Inventario de productos</h2>
+        <h3>Paso 1: crear el HTML</h3>
+        <p>En <code>ejercicio3.html</code>, crea campos para el nombre, precio y cantidad, además de una tabla:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Inventario de productos&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Inventario de productos&lt;/h1&gt;
+
+    &lt;form id=&quot;formulario&quot;&gt;
+        &lt;label for=&quot;producto&quot;&gt;Nombre del producto:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;producto&quot; required&gt;
+
+        &lt;label for=&quot;precio&quot;&gt;Precio unitario:&lt;/label&gt;
+        &lt;input type=&quot;number&quot; id=&quot;precio&quot; min=&quot;0.01&quot; step=&quot;0.01&quot; required&gt;
+
+        &lt;label for=&quot;cantidad&quot;&gt;Cantidad:&lt;/label&gt;
+        &lt;input type=&quot;number&quot; id=&quot;cantidad&quot; min=&quot;1&quot; step=&quot;1&quot; required&gt;
+
+        &lt;button type=&quot;button&quot; onclick=&quot;agregarProducto()&quot;&gt;Agregar producto&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;h2&gt;Productos registrados&lt;/h2&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Producto&lt;/th&gt;
+                &lt;th&gt;Precio&lt;/th&gt;
+                &lt;th&gt;Cantidad&lt;/th&gt;
+                &lt;th&gt;Subtotal&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody id=&quot;tabla&quot;&gt;&lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;h2&gt;Resultados&lt;/h2&gt;
+    &lt;p id=&quot;total&quot;&gt;&lt;/p&gt;
+
+    &lt;script src=&quot;js/ejercicio3.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <h3>Paso 2: programar la lógica</h3>
+        <p>En <code>js/ejercicio3.js</code>, cada producto será un objeto guardado en un arreglo. El subtotal se calcula multiplicando el precio por la cantidad:</p>
+        <pre><code class="language-javascript">let listaProductos = [];
+
+let formulario = document.getElementById(&quot;formulario&quot;);
+let producto = document.getElementById(&quot;producto&quot;);
+let precio = document.getElementById(&quot;precio&quot;);
+let cantidad = document.getElementById(&quot;cantidad&quot;);
+let tabla = document.getElementById(&quot;tabla&quot;);
+let total = document.getElementById(&quot;total&quot;);
+
+function agregarProducto() {
+    if (!formulario.reportValidity()) {
+        return;
+    }
+
+    listaProductos.push({
+        nombre: producto.value.trim(),
+        precio: parseFloat(precio.value),
+        cantidad: parseInt(cantidad.value, 10)
+    });
+
+    formulario.reset();
+    mostrar();
+}
+
+function mostrar() {
+    let totalNuevo = 0;
+    tabla.innerHTML = &quot;&quot;;
+
+    for (let i = 0; i &lt; listaProductos.length; i++) {
+        let productoActual = listaProductos[i];
+        let subtotal = productoActual.precio * productoActual.cantidad;
+        totalNuevo += subtotal;
+
+        tabla.innerHTML += `&lt;tr&gt;
+            &lt;td&gt;${productoActual.nombre}&lt;/td&gt;
+            &lt;td&gt;${productoActual.precio}&lt;/td&gt;
+            &lt;td&gt;${productoActual.cantidad}&lt;/td&gt;
+            &lt;td&gt;${subtotal}&lt;/td&gt;
+        &lt;/tr&gt;`;
+    }
+
+    total.textContent = `Total: ${totalNuevo}`;
+}</code></pre>
+        <h3>Paso 3: probar</h3>
+        <ul>
+            <li>Intenta enviar los campos vacíos y observa la validación del navegador.</li>
+            <li>Agrega más de un producto.</li>
+            <li>Comprueba el subtotal de cada fila y el total del inventario.</li>
+            <li>Verifica que el formulario se limpie después de agregar un producto.</li>
+        </ul>
+        <h2>7. Reto final: buscador de estudiantes</h2>
+        <p>El archivo <code>ejercicio4.html</code> contiene únicamente el enunciado del reto; no se proporciona una solución para copiar. El reto consiste en construir tu propia interfaz y JavaScript para buscar estudiantes por nombre. Consulta la página para ver los requisitos y los casos que debes probar.</p>
+        <p>Antes de programar, dibuja en papel qué información tendrá cada estudiante y qué elementos necesitará la página. Después implementa tu propuesta usando los arreglos, funciones y botones de los ejercicios anteriores. El archivo <code>js/ejercicio4.js</code> queda para tu implementación.</p>
+        <h2>8. Lista de comprobación final</h2>
+        <ul>
+            <li>[ ] Todos los archivos están en las carpetas indicadas.</li>
+            <li>[ ] Cada página HTML carga su archivo JavaScript correcto.</li>
+            <li>[ ] Los <code>id</code> del HTML coinciden con los usados en JavaScript.</li>
+            <li>[ ] Los botones que ejecutan funciones usan <code>type="button"</code> y <code>onclick</code>.</li>
+            <li>[ ] Los tres primeros ejercicios se prueban con entradas válidas y no válidas.</li>
+            <li>[ ] El reto final tiene una solución propia y se prueba con estudiantes encontrados, no encontrados y una búsqueda vacía.</li>
+        </ul>
+    </main>
+</body>
+</html>
